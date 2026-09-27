@@ -66,6 +66,42 @@ body {
   }
 }
 
+@keyframes students-hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+    filter: blur(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes student-grid-build-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.88);
+    filter: blur(8px) saturate(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0) saturate(1);
+  }
+}
+
+.students-hero-copy {
+  animation: students-hero-in 1.5s 150ms cubic-bezier(0.22, 0.8, 0.3, 1) both;
+}
+
+.students-grid-build .student-grid-item {
+  opacity: 0;
+  animation: student-grid-build-in 700ms cubic-bezier(0.22, 0.8, 0.3, 1) forwards;
+  animation-delay: calc(var(--grid-index) * 18ms);
+}
+
 @keyframes students-finale-in {
   from {
     opacity: 0;
@@ -123,6 +159,65 @@ body {
     opacity: 1;
     transform: scale(1);
     filter: blur(0);
+  }
+}
+
+@keyframes induction-kicker-in {
+  from {
+    opacity: 0;
+    letter-spacing: 0.9em;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    letter-spacing: 0.55em;
+    transform: translateY(0);
+  }
+}
+
+@keyframes induction-welcome-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes induction-detail-in {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: translateY(0);
+  }
+}
+
+.induction-kicker {
+  animation: induction-kicker-in 1s 500ms cubic-bezier(0.22, 0.8, 0.3, 1) both;
+}
+
+.induction-welcome {
+  animation: induction-welcome-in 1.2s 850ms cubic-bezier(0.22, 0.8, 0.3, 1) both;
+}
+
+.induction-detail {
+  animation: induction-detail-in 1.4s 1.5s cubic-bezier(0.22, 0.8, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .induction-kicker,
+  .induction-welcome,
+  .induction-detail {
+    animation: none;
   }
 }
 

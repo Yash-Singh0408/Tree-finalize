@@ -26,7 +26,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'ARBOREA — Immersive 3D Tree Growth Experience',
+  title: 'INDUCTION - SIESCOMS MCA 2026-28',
   description:
     'An interactive, scroll-driven 3D botanical journey from a microscopic sapling into a monumental living tree and its suspended branch stories.',
 };

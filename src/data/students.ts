@@ -10,7 +10,7 @@ export const studentImages = [
   '/images/students/Akanksha_Gutthe_MCA012.png',
   '/images/students/Amrutha_Nambiar_MCA26014.png',
   '/images/students/Ananiya_Anantharaman_MCA26015.png',
-  '/images/students/Anshuman_Sahu_MCA26118.jpg',
+  '/images/students/Anshuman_Sahu_MCA26118.jpg', 
   '/images/students/Anuj_Dubey_MCA26016.jpg',
   '/images/students/Anusuya Murugesh_MCA26018.jpg',
   '/images/students/ARSH_SHAIKH_MCA019.jpg',
@@ -19,6 +19,7 @@ export const studentImages = [
   '/images/students/DHANASHREE_SHINDE_MCA26026.png',
   '/images/students/GAURAV_SUTHAR_MCA028.jpg',
   '/images/students/GAURI_KARAMBELKAR_MCA119.png',
+  '/images/students/GAUTAM_BERA_MCA029.jpg',
   '/images/students/GLORIA_PUNCHAYIL_MCA030.jpeg',
   '/images/students/Gomathy_Kumar mca26031.png',
   '/images/students/HARRY_PULIKOTIL_MCA032.png',
@@ -26,6 +27,7 @@ export const studentImages = [
   '/images/students/IVIN_SEBASTIAN_MCA034.png',
   '/images/students/JIDNYASA_KHODADE_MCA26035.jpeg',
   '/images/students/Jitesh_Maurya_MCA036.png',
+  '/images/students/KARTHIK_PANDIAN_MCA038.jpg',
   '/images/students/KATHIR_MAKESH_MCA39.png',
   '/images/students/KRISHNA_GUPTA_MCA040.png',
   '/images/students/kumkum MCA26042.jpg',
@@ -45,8 +47,12 @@ export const studentImages = [
   '/images/students/omkar_bhambid_058.jpg',
   '/images/students/OMKAR_KHURANA_MCA26059.jpeg',
   '/images/students/OMKUMAR_VIBHANDIK MCA060.jpeg',
+  '/images/students/Padmasri_kamaraj_MCA61.jpg',
   '/images/students/Pratham_Kawade_MCA063.jpg',
+  '/images/students/PRATIK_KARANDE_MCA65.jpg',
+  '/images/students/Prerana_shinde_MCA067.jpg',
   '/images/students/Riddhish_Patil_MCA068.jpeg',
+  '/images/students/Ritesh_Thorat_MCA069.jpg',
   '/images/students/Sagar_Bhati_MCA26071.png',
   '/images/students/Sahil_yadav_Mca26072.png',
   '/images/students/SAMARTH_KASALKAR_MCA-74.png',
@@ -76,10 +82,33 @@ export const studentImages = [
   '/images/students/Vaishnavi_Patil_MCA115.png',
   '/images/students/VAISHNAVI_YADAV_MCA26102.png',
   '/images/students/varad_mankar_mca103.png',
+  '/images/students/Velmani_Yadav_MCA105.jpg',
   '/images/students/VIGNESH_ESAKKIAPPAN_MCA106.jpg',
   '/images/students/VINAY_YADAV_MCA107.jpeg',
   '/images/students/Viraj_Kamble_MCA108.jpg',
   '/images/students/VISHNU_PATHAK_MCA26109.jpg',
   '/images/students/YASH_JADHAV_MCA26111.jpg',
   '/images/students/YUSRA_MUKADAM_MCA113.jpg',
+  '/images/students/ABDULLAH-KHAN-MCA04.png',
 ] as const;
+
+export function getStudentName(imagePath: string) {
+  const fileName = imagePath.split('/').pop() ?? '';
+  return fileName
+    .replace(/\.[^.]+$/, '')
+    .replace(/\s*\(?MCA[-\s\d]+.*$/i, '')
+    .replace(/[_-]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+export function getStudentRollNumber(imagePath: string) {
+  const fileName = imagePath.split('/').pop() ?? '';
+  const rollMatch = fileName.match(/MCA[-\s]?(\d+)/i);
+
+  if (!rollMatch) return '—';
+
+  const digits = rollMatch[1];
+  return String(Number(digits.startsWith('26') && digits.length > 3 ? digits.slice(2) : digits));
+}
